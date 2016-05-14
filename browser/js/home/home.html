@@ -19,11 +19,11 @@
           <label>How long will you be Off Grid?</label>
           <input class="form-control" ng-model="offGridData.duration"><br>
           
-          <input type="submit" class="btn btn-primary" value="I'm Ready to Go Off Grid!">
+          <input type="submit" class="btn btn-primary" value="Go Off Grid!">
 
         </form>
 
-        <form ng-if="offGrid" ng-submit="goOnGrid()">
+        <form class="well form-group" ng-if="offGrid" ng-submit="goOnGrid()">
           <h2>Tell Your Friends You're Back</h2>
           <input type="submit" class="btn btn-primary" value="I'm Back!">
 
