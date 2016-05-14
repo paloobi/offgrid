@@ -7,44 +7,82 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('HomeCtrl', function($scope) {
+
+  $scope.options = [
+    {
+      val: "rideshare",
+      text: "using a rideshare"
+    },
+    {
+      val: "blind date",
+      text: "going on a blind date"
+    },
+    {
+      val: "hiking",
+      text: "going hiking"
+    },
+    {
+      val: "camping",
+      text:"going camping"
+    },
+    {
+      val: "flight",
+      text: "taking a flight"
+    },
+    {
+      val: "drinking",
+      text: "going out drinking"
+    }
+  ]
+
+  $scope.offGrid = false;
+
+  $scope.goOffGrid = function() {
+    $scope.offGrid = true;
+  }
+
+  $scope.goOnGrid = function() {
+    $scope.offGrid = false;
+  }
+
    $scope.geoFindMe = function() {
 
-  var output = document.getElementById("out");
-  console.log("Near the top. Wheee");
+    var output = document.getElementById("out");
 
-  if (!navigator.geolocation){
-    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-    return;
+    if (!navigator.geolocation){
+      output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+      return;
+    }
+
+    function success(position) {
+      var latitude  = position.coords.latitude;
+      var longitude = position.coords.longitude;
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: {lat: latitude, lng: longitude}
+      });
+        var img = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+        var beachMarker = new google.maps.Marker({
+          position: {lat: -33.890, lng: 151.274},
+          map: map,
+          icon: img
+        });
+
+
+      output.appendChild(img);
+
+    };
+
+    function error() {
+       console.log("error() function");
+
+      output.innerHTML = "Unable to retrieve your location";
+    };
+
+    output.innerHTML = "<p>Locating…</p>";
+
+    navigator.geolocation.getCurrentPosition(success, error, {timeout:10000});
   }
-  console.log("Just before the success");
 
-  function success(position) {
-    var latitude  = position.coords.latitude;
-    var longitude = position.coords.longitude;
-
-    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-    console.log("Writing HTML for long and lat");
-
-
-    var img = new Image();
-    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-    console.log("after getting image from googleapis");
-
-    output.appendChild(img);
-    console.log("after output.appendChild");
-
-  };
-
-  function error() {
-     console.log("error() function");
-
-    output.innerHTML = "Unable to retrieve your location";
-  };
-
-  output.innerHTML = "<p>Locating…</p>";
-  console.log("after output.innerHTML Location... p tag");
-
-  navigator.geolocation.getCurrentPosition(success, error);
-}
-}
-);
+});

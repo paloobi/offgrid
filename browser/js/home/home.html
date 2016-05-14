@@ -1,4 +1,29 @@
 <section id="home">
+    <form class="well form-group" name="offGridForm" ng-model="offGridData" ng-if="!offGrid" ng-submit="goOffGrid(offGridData)">
+
+      <h2>Tell Your Friends You're Going Off Grid</h2>
+
+      <label for="startTime">When are you going Off Grid?</label>
+      <input name="startTime" class="form-control" ng-model="offGridData.start"><br>
+
+      <label for="reason">Why are you going Off Grid?</label>
+      <select name="reason" class="form-control" ng-model="offGridData.reason">
+        <option ng-repeat="option in options" value="{{option.val}}">{{option.text}}</option>
+      </select><br>
+
+      <label>How long will you be Off Grid?</label>
+      <input class="form-control" ng-model="offGridData.duration"><br>
+      
+      <input type="submit" class="btn btn-primary" value="I'm Ready to Go Off Grid!">
+
+    </form>
+
+    <form ng-if="offGrid" ng-submit="goOnGrid()">
+      <h2>Tell Your Friends You're Back</h2>
+      <input type="submit" class="btn btn-primary" value="I'm Back!">
+
+    </form>
+
     <p><button ng-click="geoFindMe()">Show my location</button></p>
     <div id="out"></div>
 </section>
