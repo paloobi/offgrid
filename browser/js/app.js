@@ -1,5 +1,5 @@
 'use strict';
-window.app = angular.module('App', ['PreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate']);
+window.app = angular.module('OffGrid', ['PreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate']);
 
 app.config(function ($urlRouterProvider, $locationProvider) {
     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
