@@ -14,4 +14,7 @@ Ensure that the [mongo daemon](https://docs.mongodb.com/manual/tutorial/manage-m
 Run `npm install` to install all NPM package dependencies.
 
 ## Start the App
+
+Run `gulp` to prepare the frontend JS and CSS.
+
 Run `npm start` to load up the app at http://localhost:3000
