@@ -15,11 +15,20 @@ var http = require('http');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+
+/**
+  * Require in app to start the DB
+*/
+
+var startDb = require('./db');
+
+
 /**
  * Create HTTP server.
  */
 
 var server = http.createServer(app);
+
 
 /**
  * Listen on provided port, on all network interfaces.
