@@ -1,4 +1,4 @@
-# offgrid
+# OffGrid
 
 Message your Facebook friends to let them know you're going off grid - and then message them when you get back, so they know you're safe!
 
