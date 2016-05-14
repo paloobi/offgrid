@@ -18,4 +18,6 @@ Run `npm install` to install all NPM package dependencies.
 
 Run `gulp` to prepare the frontend JS and CSS.
 
-Run `npm start` to load up the app at http://localhost:3000
+Run `npm start` to run the app.
+
+Navigate to http://localhost:1337 in your preferred browser
