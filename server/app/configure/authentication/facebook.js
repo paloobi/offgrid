@@ -7,7 +7,7 @@ var UserModel = mongoose.model('User');
 module.exports = function (app) {
 
     var facebookConfig = app.getValue('env').FACEBOOK;
-
+    
     var facebookCredentials = {
         clientID: facebookConfig.clientID,
         clientSecret: facebookConfig.clientSecret,
@@ -43,7 +43,10 @@ module.exports = function (app) {
     app.get('/auth/facebook', passport.authenticate('facebook'));
 
     app.get('/auth/facebook/callback',
-        passport.authenticate('facebook', { failureRedirect: '/login' }),
+        passport.authenticate('facebook', { 
+            successRedirect: '/map', 
+            failureRedirect: '/login' 
+        }),
         function (req, res) {
             res.redirect('/');
         });
