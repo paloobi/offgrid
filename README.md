@@ -4,7 +4,11 @@ Message your Facebook friends to let them know you're going off grid - and then 
 
 ## Install
 
-Make sure you have [Node.js](https://nodejs.org/en/download/) and [MongoDB](https://docs.mongodb.com/manual/installation/) installed, and that [mongo daemon](https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/) is running.
+Make sure you have the following installed:
+1. [Node.js](https://nodejs.org/en/download/)
+2. [MongoDB](https://docs.mongodb.com/manual/installation/)
+
+Ensure that the[mongo daemon](https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/) is running.
 
 Run `npm install` to install all dependencies.
 
