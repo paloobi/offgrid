@@ -6,7 +6,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('HomeCtrl', function($scope) {
+app.controller('HomeCtrl', function($scope, $http) {
 
   $scope.options = [
     {
@@ -37,15 +37,24 @@ app.controller('HomeCtrl', function($scope) {
 
   $scope.offGrid = false;
 
-  $scope.goOffGrid = function() {
-    $scope.offGrid = true;
+  $scope.goOffGrid = function(offGridData) {
+    console.log(offGridData);
+    $http.post('/api/offGrid', offGridData)
+    .then(function(){
+      $scope.offGrid = true;
+    })
+    .catch(function() {
+      console.error("ERROR - offgrid api call failed")
+    });
   }
 
   $scope.goOnGrid = function() {
     $scope.offGrid = false;
   }
 
-  $scope.geoFindMe = function() {
+  init();
+  
+  function init() {
 
     var output = document.getElementById("out");
 
@@ -84,9 +93,10 @@ app.controller('HomeCtrl', function($scope) {
       output.innerHTML = "Unable to retrieve your location";
     };
 
-    output.innerHTML = "<p>Locating…</p>";
+    // output.innerHTML = "<p>Locating…</p>";
 
     navigator.geolocation.getCurrentPosition(success, error, {timeout:10000});
+
   }
 
 });
