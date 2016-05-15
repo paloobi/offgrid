@@ -14,7 +14,7 @@
 
           <label for="reason">Why are you going Off Grid?</label>
           <select name="reason" class="form-control" ng-model="offGridData.reason">
-            <option ng-repeat="option in options" value="{{option.val}}">{{option.text}}</option>
+            <option ng-repeat="option in options" value="{{option.text}}">{{option.text}}</option>
           </select><br>
 
           <label>How long will you be Off Grid?</label>
@@ -24,7 +24,7 @@
 
         </form>
 
-        <form ng-if="offGrid" ng-submit="goOnGrid()">
+        <form class="well form-group" ng-if="offGrid" ng-submit="goOnGrid()">
           <h2>Tell Your Friends You're Back</h2>
           <input type="submit" class="btn btn-primary" value="I'm Back!">
 
