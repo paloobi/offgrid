@@ -4,7 +4,7 @@
   width: 90%;
   @include clearfix;
 
-  p {
+  p, ul {
     width: 40%;
     margin: 0 auto;
     text-align: justify;
