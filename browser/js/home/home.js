@@ -59,18 +59,20 @@ app.controller('HomeCtrl', function($scope) {
       var longitude = position.coords.longitude;
 
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
+        zoom: 10,
         center: {lat: latitude, lng: longitude}
       });
-        var img = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-        var beachMarker = new google.maps.Marker({
-          position: {lat: -33.890, lng: 151.274},
-          map: map,
-          icon: img
-        });
+      console.log(map);
+
+      var img = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+      var beachMarker = new google.maps.Marker({
+        position: {lat: latitude, lng: longitude},
+        map: map,
+        icon: img
+      });
 
 
-      output.appendChild(img);
+      // output.appendChild(img);
 
     };
 
