@@ -1,30 +1,43 @@
 <section id="home">
-    <form class="well form-group" name="offGridForm" ng-model="offGridData" ng-if="!offGrid" ng-submit="goOffGrid(offGridData)">
 
-      <h2>Tell Your Friends You're Going Off Grid</h2>
+  <div class="container">
+    <div class="row">
 
-      <label for="startTime">When are you going Off Grid?</label>
-      <input name="startTime" class="form-control" ng-model="offGridData.start"><br>
+      <div class="col-md-6">
 
-      <label for="reason">Why are you going Off Grid?</label>
-      <select name="reason" class="form-control" ng-model="offGridData.reason">
-        <option ng-repeat="option in options" value="{{option.val}}">{{option.text}}</option>
-      </select><br>
+        <form class="well form-group" name="offGridForm" ng-model="offGridData" ng-if="!offGrid" ng-submit="goOffGrid(offGridData)">
 
-      <label>How long will you be Off Grid?</label>
-      <input class="form-control" ng-model="offGridData.duration"><br>
-      
-      <input type="submit" class="btn btn-primary" value="I'm Ready to Go Off Grid!">
+          <h2>Tell Your Friends You're Going Off Grid</h2>
 
-    </form>
+          <label for="startTime">When are you going Off Grid?</label>
+          <input name="startTime" class="form-control" ng-model="offGridData.start"><br>
 
-    <form ng-if="offGrid" ng-submit="goOnGrid()">
-      <h2>Tell Your Friends You're Back</h2>
-      <input type="submit" class="btn btn-primary" value="I'm Back!">
+          <label for="reason">Why are you going Off Grid?</label>
+          <select name="reason" class="form-control" ng-model="offGridData.reason">
+            <option ng-repeat="option in options" value="{{option.val}}">{{option.text}}</option>
+          </select><br>
 
-    </form>
+          <label>How long will you be Off Grid?</label>
+          <input class="form-control" ng-model="offGridData.duration"><br>
+          
+          <input type="submit" class="btn btn-primary" value="I'm Ready to Go Off Grid!">
 
-    <p><button ng-click="geoFindMe()">Show my location</button></p>
-    <div id="out"></div>
-    <div id="map"></div>
+        </form>
+
+        <form ng-if="offGrid" ng-submit="goOnGrid()">
+          <h2>Tell Your Friends You're Back</h2>
+          <input type="submit" class="btn btn-primary" value="I'm Back!">
+
+        </form>
+
+      </div>
+
+      <div class="col-md-6">
+        <p><button ng-click="geoFindMe()">Show my location</button></p>
+        <div id="out"></div>
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
 </section>
+>>>>>>> master

@@ -45,7 +45,7 @@ app.controller('HomeCtrl', function($scope) {
     $scope.offGrid = false;
   }
 
-   $scope.geoFindMe = function() {
+  $scope.geoFindMe = function() {
 
     var output = document.getElementById("out");
 
@@ -70,9 +70,6 @@ app.controller('HomeCtrl', function($scope) {
         map: map,
         icon: img
       });
-
-
-      // output.appendChild(img);
 
     };
 
