@@ -58,6 +58,8 @@ app.controller('HomeCtrl', function($scope) {
       var latitude  = position.coords.latitude;
       var longitude = position.coords.longitude;
 
+      output.remove();
+
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: {lat: latitude, lng: longitude}
@@ -67,9 +69,12 @@ app.controller('HomeCtrl', function($scope) {
       var img = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
       var beachMarker = new google.maps.Marker({
         position: {lat: latitude, lng: longitude},
+        draggable: true,
         map: map,
+        animation: google.maps.Animation.DROP,
         icon: img
       });
+
 
     };
 
