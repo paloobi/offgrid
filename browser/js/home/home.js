@@ -37,8 +37,9 @@ app.controller('HomeCtrl', function($scope, $http) {
 
   $scope.offGrid = false;
 
-  $scope.goOffGrid = function() {
-    $http.post('/api/offGrid', $scope.offGridData)
+  $scope.goOffGrid = function(offGridData) {
+    console.log(offGridData);
+    $http.post('/api/offGrid', offGridData)
     .then(function(){
       $scope.offGrid = true;
     })
@@ -51,7 +52,9 @@ app.controller('HomeCtrl', function($scope, $http) {
     $scope.offGrid = false;
   }
 
-  $scope.geoFindMe = function() {
+  init();
+  
+  function init() {
 
     var output = document.getElementById("out");
 
@@ -90,9 +93,10 @@ app.controller('HomeCtrl', function($scope, $http) {
       output.innerHTML = "Unable to retrieve your location";
     };
 
-    output.innerHTML = "<p>Locating…</p>";
+    // output.innerHTML = "<p>Locating…</p>";
 
     navigator.geolocation.getCurrentPosition(success, error, {timeout:10000});
+
   }
 
 });
