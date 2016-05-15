@@ -9,7 +9,8 @@ var schema = new mongoose.Schema({
         type: String
     },
     facebook: {
-        id: String
+        id: String,
+        token: String
     }
 });
 

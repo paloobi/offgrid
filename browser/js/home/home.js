@@ -6,7 +6,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('HomeCtrl', function($scope) {
+app.controller('HomeCtrl', function($scope, $http) {
 
   $scope.options = [
     {
@@ -38,7 +38,13 @@ app.controller('HomeCtrl', function($scope) {
   $scope.offGrid = false;
 
   $scope.goOffGrid = function() {
-    $scope.offGrid = true;
+    $http.post('/api/offGrid', $scope.offGridData)
+    .then(function(){
+      $scope.offGrid = true;
+    })
+    .catch(function() {
+      console.error("ERROR - offgrid api call failed")
+    });
   }
 
   $scope.goOnGrid = function() {

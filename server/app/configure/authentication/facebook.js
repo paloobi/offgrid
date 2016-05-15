@@ -29,7 +29,8 @@ module.exports = function (app) {
                         name: profile.displayName,
                         email: profile.email,
                         facebook: {
-                            id: profile.id
+                            id: profile.id,
+                            token: accessToken
                         }
                     });
                 }
