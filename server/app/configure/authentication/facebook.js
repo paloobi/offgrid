@@ -29,7 +29,8 @@ module.exports = function (app) {
                         name: profile.displayName,
                         email: profile.email,
                         facebook: {
-                            id: profile.id
+                            id: profile.id,
+                            token: accessToken
                         }
                     });
                 }
@@ -45,11 +46,11 @@ module.exports = function (app) {
 
     passport.use(new FacebookStrategy(facebookCredentials, verifyCallback));
 
-    app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['user_friends', 'manage_pages'] }));
+    app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['user_friends', 'publish_actions', 'manage_pages'] }));
 
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', { 
-            successRedirect: '/map', 
+            successRedirect: '/', 
             failureRedirect: '/login' 
         }),
         function (req, res) {
