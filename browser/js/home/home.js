@@ -45,31 +45,36 @@ app.controller('HomeCtrl', function($scope) {
     $scope.offGrid = false;
   }
 
-   $scope.geoFindMe = function() {
+  $scope.geoFindMe = function() {
 
     var output = document.getElementById("out");
-    console.log("Near the top. Wheee");
 
     if (!navigator.geolocation){
       output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
       return;
     }
-    console.log("Just before the success");
 
     function success(position) {
       var latitude  = position.coords.latitude;
       var longitude = position.coords.longitude;
 
-      output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-      console.log("Writing HTML for long and lat");
+      output.remove();
 
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: {lat: latitude, lng: longitude}
+      });
+      console.log(map);
 
-      var img = new Image();
-      img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-      console.log("after getting image from googleapis");
+      var img = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+      var beachMarker = new google.maps.Marker({
+        position: {lat: latitude, lng: longitude},
+        draggable: true,
+        map: map,
+        animation: google.maps.Animation.DROP,
+        icon: img
+      });
 
-      output.appendChild(img);
-      console.log("after output.appendChild");
 
     };
 
@@ -80,9 +85,8 @@ app.controller('HomeCtrl', function($scope) {
     };
 
     output.innerHTML = "<p>Locating…</p>";
-    console.log("after output.innerHTML Location... p tag");
 
-    navigator.geolocation.getCurrentPosition(success, error);
+    navigator.geolocation.getCurrentPosition(success, error, {timeout:10000});
   }
 
 });
