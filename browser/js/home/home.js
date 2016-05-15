@@ -75,15 +75,14 @@ app.controller('HomeCtrl', function($scope, $http) {
       });
       console.log(map);
 
-      var img = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+      var img = '/star-3.png';
       var beachMarker = new google.maps.Marker({
         position: {lat: latitude, lng: longitude},
-        draggable: true,
-        map: map,
         animation: google.maps.Animation.DROP,
-        icon: img
+        draggable: true,
+        icon: img,
+        map: map
       });
-
 
     };
 
