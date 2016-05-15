@@ -6,14 +6,12 @@
 
   p, ul {
     width: 40%;
-    margin: 0 auto;
-    text-align: justify;
+    text-align: left;
     font-size: 22px;
     font-weight: 300;
-    float: left;
   }
   ul {
-    display: inline;
+    margin-left: 20px;
   }
 
   .carousel {
